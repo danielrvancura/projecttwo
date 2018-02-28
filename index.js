@@ -12,33 +12,16 @@ var isLoggedIn = require('./middleware/isLoggedIn');
 var app = express();
 
 app.set('view engine', 'ejs');
-
+app.use(express.static(__dirname + '/public'));
 app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(ejsLayouts);
+
 app.use(session({
   secret: process.env.SESSION_SECRET, //signing our section
   resave: false,
   saveUninitialized: true
 }));
-
-app.use(require('morgan')('dev'));
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(ejsLayouts);
-
-app.get('/api', function(req, res) {
-  console.log('pwefrwef');
-    var params = Object.keys(req.query).map(param => param + '=' + req.query[param]);
-    console.log(params, req.query);
-    // var musicUrl = 'http://ws.audioscrobbler.com/2.0/?api_key=' + process.env.LAST_FM_KEY + '&format=json&' + params.join('&');
-    var musicUrl = `http://ws.audioscrobbler.com/2.0/?api_key=${process.env.LAST_FM_KEY}&format=json&${params.join('&')}`;
-    console.log(musicUrl);
-    request(musicUrl, function(error, response, body) {
-
-        res.send(body);
-    });
-});
 
 app.use(flash());
 
@@ -55,6 +38,31 @@ app.use(function(req, res, next){
 app.get('/', function(req, res) {
   res.render('index');
 });
+
+app.get('/api', function(req, res) {
+    var params = req.query.artist;
+    // var musicUrl = 'http://ws.audioscrobbler.com/2.0/?api_key=' + process.env.LAST_FM_KEY + '&format=json&' + params.join('&');
+    // var musicUrl = 'http://ws.audioscrobbler.com/2.0/?api_key=${process.env.LAST_FM_KEY}&format=json&${params.join('&')}';
+    var musicUrl = 'http://ws.audioscrobbler.com/2.0/?api_key=' + process.env.LAST_FM_KEY + '&format=json&method=artist.getsimilar&artist=' + params;
+    console.log(musicUrl);
+    request(musicUrl, function(error, response, body) {
+
+        res.send(body);
+    });
+});
+
+
+app.get('/api', function(req, res) {
+  var artistName = req.params.artist;
+  var artistData;
+  request(musicUrl, function(error, response, body) {
+    artistData = JSON.parse(body);
+    console.log(artistData);
+    res.render('show', {artistName: artistName});
+  });
+});
+
+
 
 app.get('/profile', isLoggedIn, function(req, res) {
   res.render('profile');

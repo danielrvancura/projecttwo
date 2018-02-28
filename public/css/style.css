@@ -1,0 +1,12 @@
+.form-control {
+  width: 20%;
+}
+h1 {
+  color: black;
+}
+body {
+  background-color: grey;
+}
+.btn btn-default {
+  display: inline-block;
+}
