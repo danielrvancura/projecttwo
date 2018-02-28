@@ -1,3 +1,5 @@
+ var request = require('request');
+
 require('dotenv').config();
 var flash = require('connect-flash');
 var express = require('express');
@@ -19,6 +21,24 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+
+app.use(require('morgan')('dev'));
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(ejsLayouts);
+
+app.get('/api', function(req, res) {
+  console.log('pwefrwef');
+    var params = Object.keys(req.query).map(param => param + '=' + req.query[param]);
+    console.log(params, req.query);
+    // var musicUrl = 'http://ws.audioscrobbler.com/2.0/?api_key=' + process.env.LAST_FM_KEY + '&format=json&' + params.join('&');
+    var musicUrl = `http://ws.audioscrobbler.com/2.0/?api_key=${process.env.LAST_FM_KEY}&format=json&${params.join('&')}`;
+    console.log(musicUrl);
+    request(musicUrl, function(error, response, body) {
+
+        res.send(body);
+    });
+});
 
 app.use(flash());
 
