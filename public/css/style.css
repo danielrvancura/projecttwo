@@ -1,12 +1,28 @@
 .form-control {
-  width: 20%;
+  width: 50%;
 }
-h1 {
+.artistName {
   color: black;
+  font-size: 25pt;
+  text-transform: uppercase;
+  }
+.similar {
+  color: black;
+  font-size: 20pt;
 }
 body {
   background-color: grey;
 }
 .btn btn-default {
   display: inline-block;
+}
+.favorites {
+  height: 30px;
+  width: 200px;
+  color: silver;
+  background-color: black;
+  margin-left: 25px;
+}
+ul {
+  list-style: none;
 }

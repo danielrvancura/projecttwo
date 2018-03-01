@@ -1,5 +1,4 @@
- var request = require('request');
-
+var request = require('request');
 require('dotenv').config();
 var flash = require('connect-flash');
 var express = require('express');
@@ -8,7 +7,6 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('./config/ppConfig');
 var isLoggedIn = require('./middleware/isLoggedIn');
-
 var app = express();
 
 app.set('view engine', 'ejs');
@@ -41,33 +39,19 @@ app.get('/', function(req, res) {
 
 app.get('/api', function(req, res) {
     var params = req.query.artist;
-    // var musicUrl = 'http://ws.audioscrobbler.com/2.0/?api_key=' + process.env.LAST_FM_KEY + '&format=json&' + params.join('&');
-    // var musicUrl = 'http://ws.audioscrobbler.com/2.0/?api_key=${process.env.LAST_FM_KEY}&format=json&${params.join('&')}';
     var musicUrl = 'http://ws.audioscrobbler.com/2.0/?api_key=' + process.env.LAST_FM_KEY + '&format=json&method=artist.getsimilar&artist=' + params;
     console.log(musicUrl);
     request(musicUrl, function(error, response, body) {
 
-        res.send(body);
+    res.send(body);
     });
 });
-
-
-app.get('/api', function(req, res) {
-  var artistName = req.params.artist;
-  var artistData;
-  request(musicUrl, function(error, response, body) {
-    artistData = JSON.parse(body);
-    console.log(artistData);
-    res.render('show', {artistName: artistName});
-  });
-});
-
-
 
 app.get('/profile', isLoggedIn, function(req, res) {
   res.render('profile');
 });
 
+app.use('/artistData', require('./controllers/music'));
 app.use('/auth', require('./controllers/auth'));
 
 var server = app.listen(process.env.PORT || 3000);

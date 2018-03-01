@@ -1,0 +1,12 @@
+<h1 class="artistName"><%= artistName %></h1>
+
+<% similarArtists.forEach(function (artist){ %>
+  <ul>
+  <li class="similar"><%= artist.name %></li>
+  <li> <img src="<%=artist.image[2]['#text']%>"> </li>
+  <% console.log(artist);%>
+  </ul>
+  <form method="GET" action="/artist">
+    <button class="favorites" type="submit">Add to Favorites</button>
+  </form>
+<%})%>
