@@ -1,16 +1,35 @@
 <h1 class="artistName"><%= artistName %></h1>
+<a href="/">Back to Search</a></br>
 <a href="/favorites">Your Favorites List</a>
 
-<% similarArtists.forEach(function (artist){ %>
-
+<% similarArtists.forEach(function(artist) { %>
+  <% console.log(Object.keys(artist)); %>
+  <% var btnId = 'btn' + artist.url.replace(/\W/g, ''); %>
+  <% var artistId = 'name' + artist.url.replace(/\W/g, ''); %>
+  <% var picId = 'pic' + artist.url.replace(/\W/g, ''); %>
   <ul>
-  <li class="similar"><%= artist.name %></li>
-  <li> <img src="<%=artist.image[2]['#text']%>"> </li>
-  <% console.log(artist);%>
+    <li class="similar"><%= artist.name %></li>
+    <li> <img src="<%=artist.image[3]['#text']%>"> </li>
   </ul>
   <form method="POST" action="/favorites">
-    <input type="hidden" name="artistname" value="<%= artist.name %>">
-    <input type="hidden" name="picture" value="<%=artist.image[2]['#text']%>">
-    <button class="favorites" type="submit">Add to Favorites</button>
+    <input type="hidden" id="<%= artistId %>" name="artistname" value="<%= artist.name %>">
+    <input type="hidden" id="<%= picId %>" name="picture" value="<%=artist.image[2]['#text']%>">
+    <button id="<%= btnId %>" class="favorites" type="submit">Add to Favorites</button>
   </form>
+  <script>
+    $( "#<%= btnId %>" ).click(function(e) {
+      e.preventDefault();
+      console.log("Yes we are hittin it");
+      $( "#<%= btnId %>" ).css('background-color', 'green');
+      // Here is where we call a backend route
+      $.post('/favorites', {
+        artistname: $('#<%= artistId %>').val(),
+        picture: $('#<%= picId %>').val()
+      }, function(response) {
+        console.log(response);
+      });
+    });
+  </script>
 <%})%>
+<a href="/">Back to Search</a></br>
+<a href="/favorites">Your Favorites List</a>

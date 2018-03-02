@@ -10,13 +10,18 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-    db.artist.create({
+  db.user.find({
+    where: {
+      id: req.user.id
+    }
+  }).then(function(user) {
+    user.createArtist({
       name: req.body.artistname,
       picture: req.body.picture
-
-    }).then(function(){
-    // res.redirect('/artists');
-    });
+    }).then(function(artist) {
+      res.send(artist.name);
+    })
+  });
 });
 
 module.exports = router;
