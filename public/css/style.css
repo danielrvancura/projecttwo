@@ -23,6 +23,10 @@ body {
   background-color: black;
   margin-left: 25px;
 }
+/* .favorites:focus {
+  background-color: green;
+  text: "Added";
+} */
 ul {
   list-style: none;
 }

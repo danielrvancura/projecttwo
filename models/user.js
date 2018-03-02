@@ -1,4 +1,5 @@
 'use strict';
+var db = require('../models');
 var bcrypt = require('bcrypt');
 
 module.exports = (sequelize, DataTypes) => {
@@ -41,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   user.associate = function(models) {
     // associations can be defined here
-      models.users.hasMany(models.artists);
+      models.user.hasMany(models.artist);
 
   };
   user.prototype.validPassword = function(passwordTyped){

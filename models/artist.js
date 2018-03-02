@@ -1,3 +1,5 @@
+var db = require('../models');
+
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var artist = sequelize.define('artist', {
@@ -7,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   artist.associate = function(models) {
     // associations can be defined here
-      models.artists.hasMany(models.users);
+      models.artist.hasMany(models.user);
   };
   return artist;
 };
