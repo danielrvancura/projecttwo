@@ -9,10 +9,10 @@
   <% var picId = 'pic' + artist.url.replace(/\W/g, ''); %>
   <ul>
     <li class="similar"><%= artist.name %></li>
-    <li> <img src="<%=artist.image[3]['#text']%>"> </li>
+    <li> <img class= "circle" src="<%=artist.image[3]['#text']%>"> </li>
     <form method="POST" action="/favorites">
       <input type="hidden" id="<%= artistId %>" name="artistname" value="<%= artist.name %>">
-      <input type="hidden" id="<%= picId %>" name="picture" value="<%=artist.image[2]['#text']%>">
+      <input type="hidden" id="<%= picId %>" name="picture" value="<%=artist.image[3]['#text']%>">
       <button id="<%= btnId %>" class="favorites" type="submit">Add to Favorites</button>
   </ul>
 
