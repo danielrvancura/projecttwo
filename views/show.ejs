@@ -1,19 +1,22 @@
-<h1 class="artistName"><%= artistName %></h1>
 <a href="/">Back to Search</a></br>
 <a href="/favorites">Your Favorites List</a>
+
+<h1 class="artistName"><%= artistName %></h1>
+
 
 <% similarArtists.forEach(function(artist) { %>
   <% console.log(Object.keys(artist)); %>
   <% var btnId = 'btn' + artist.url.replace(/\W/g, ''); %>
   <% var artistId = 'name' + artist.url.replace(/\W/g, ''); %>
   <% var picId = 'pic' + artist.url.replace(/\W/g, ''); %>
-  <ul>
+
+  <ul class="col-md-4">
     <li class="similar"><%= artist.name %></li>
-    <li> <img class= "circle" src="<%=artist.image[3]['#text']%>"> </li>
+    <li class="similar"> <img class= "circle" src="<%=artist.image[3]['#text']%>"> </li>
     <form method="POST" action="/favorites">
       <input type="hidden" id="<%= artistId %>" name="artistname" value="<%= artist.name %>">
       <input type="hidden" id="<%= picId %>" name="picture" value="<%=artist.image[3]['#text']%>">
-      <button id="<%= btnId %>" class="favorites" type="submit">Add to Favorites</button>
+      <button id="<%= btnId %>" class="favorites" type="submit">Save for Later</button>
   </ul>
 
   </form>
@@ -32,5 +35,6 @@
     });
   </script>
 <%})%>
+
 <a href="/">Back to Search</a></br>
-<a href="/favorites">Your Favorites List</a>
+<a href="/favorites">Bands I Saved</a>
