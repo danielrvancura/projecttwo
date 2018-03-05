@@ -12,7 +12,7 @@
 
   <ul class="col-md-4">
     <li class="similar"><%= artist.name %></li>
-    <li class="similar"> <img class= "circle" src="<%=artist.image[3]['#text']%>"> </li>
+    <li class="similar"> <img class= "circle" src="<%=artist.image[2]['#text']%>"> </li>
     <form method="POST" action="/favorites">
       <input type="hidden" id="<%= artistId %>" name="artistname" value="<%= artist.name %>">
       <input type="hidden" id="<%= picId %>" name="picture" value="<%=artist.image[3]['#text']%>">
