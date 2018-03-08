@@ -46,6 +46,16 @@ app.get('/api', function(req, res) {
     res.send(body);
     });
 });
+// app.put("/api/user/:id", function(req , res){
+//                var query = "UPDATE [user] SET Name= " + req.body.Name  +  " , Email=  " + req.body.Email + "  WHERE Id= " + req.params.id;
+//                executeQuery (res, query);
+// });
+//
+// // DELETE API
+// app.delete("/api/user /:id", function(req , res){
+//                var query = "DELETE FROM [user] WHERE Id=" + req.params.id;
+//                executeQuery (res, query);
+// });
 
 app.get('/profile', isLoggedIn, function(req, res) {
   res.render('profile');

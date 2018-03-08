@@ -9,8 +9,7 @@ router.get('/api', function(req, res) {
   // console.log(musicUrl);
   request(musicUrl, function(error, response, body) {
     body = JSON.parse(body);
-    // var similars = body.similarartists.artist;
-    console.log(body);
+    // console.log(body);
     // console.log(body.similarartists.artist);
     res.render('show', {artistName: artistName, similarArtists: body.similarartists.artist});
   });

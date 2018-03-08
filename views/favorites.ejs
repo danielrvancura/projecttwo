@@ -1,5 +1,8 @@
 <% similarArtists.forEach(function(artist){ %>
-<h2><%= artist.name %></h2>
+<ul class="faveArtists">
+<li><%= artist.name %></li>
+<a href="/favorites/delete/<%= artist.id %>" class="btn delete">Remove from List</a>
+</ul>
 <%})%>
 <a href="/">Back to Search</a></br>
 <a href="/favorites">Bands I Saved</a>

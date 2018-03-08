@@ -23,5 +23,19 @@ router.post('/', function(req, res) {
     })
   });
 });
+// app.put("/api/user/:id", function(req , res){
+//                var query = "UPDATE [user] SET Name= " + req.body.Name  +  " , Email=  " + req.body.Email + "  WHERE Id= " + req.params.id;
+//                executeQuery (res, query);
+// });
+//
+// DELETE API
+router.delete("/delete/:id", function(req , res){
+  db.artist.destroy({
+    where: { id: req.params.id }
+  }).then(function(artist) {
+    res.send('sucess')
+  });
+});
+
 
 module.exports = router;

@@ -1,23 +1,25 @@
 .search {
   align-items: center;
-  
+
 }
-/* html {
-
-	height: 100%;
-	width: 100%;
-  background-size: cover;
-  background-image: url("/images/record.gif");
-} */
-
 html {
-  /* height: 100%;
-  width: 100%; */
   background: linear-gradient(to bottom, red, purple);
   background-size: cover;
-
+}
+.faveArtists {
+  align-items: center;
+  text-align: center;
+  font-size: 27pt;
+  font-family: 'El Messiri', sans-serif;
+  text-shadow: 2px 2px black;
 }
 
+.delete {
+  align-items: center;
+  font-size: 12pt;
+  color: silver;
+  background-color: black;
+}
 body {
   height: 100%;
   width: 100%;
@@ -26,17 +28,10 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .body {
   background-image: url("/images/record.gif");
-  /* background-size: cover; */
-  /* background-attachment: fixed;
-  position: relative; */
 }
-/* nav {
-  align-items: center;
-  width: 50%;
-  height: 10%;
-} */
 
 .form-control {
   width: 70%;
@@ -47,7 +42,6 @@ body {
   font-size: 25pt;
   text-transform: uppercase;
   }
-
 
 .similar {
   color: black;
@@ -81,12 +75,7 @@ h1 {
   font-family: 'Aclonica', sans-serif;
   text-shadow: 2px 2px white;
 }
-h2 {
-  text-align: center;
-  font-size: 27pt;
-  font-family: 'El Messiri', sans-serif;
-  text-shadow: 2px 2px black;
-}
+
 footer {
   position: absolute;
   bottom: 3;
