@@ -4,8 +4,14 @@ var router = express.Router();
 var request = require('request');
 
 router.get('/', function(req, res) {
-  db.artist.findAll().then(function(artists) {
-    res.render('favorites', { similarArtists: artists });
+  db.user.find({
+    where: {
+      id: req.user.id
+    }
+  }).then(function(user) {
+    user.getArtists().then(function(artists) {
+      res.render('favorites', { similarArtists: artists });
+    });
   });
 });
 
