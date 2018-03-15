@@ -1,8 +1,7 @@
 <a href="/">Back to Search</a></br>
-<a href="/favorites">Your Favorites List</a>
+<a href="/favorites">Bands I Saved</a>
 
 <h1 class="artistName"><%= artistName %></h1>
-
 
 <% similarArtists.forEach(function(artist) { %>
   <% console.log(Object.keys(artist)); %>
@@ -13,13 +12,18 @@
   <ul class="col-md-4 artist">
     <li class="similar artist-name"><%= artist.name %></li>
     <li class="similar"> <img class= "circle" src="<%=artist.image[3]['#text']%>"> </li>
-    <li class="similar">
-      <form method="POST" action="/favorites">
-        <input type="hidden" id="<%= artistId %>" name="artistname" value="<%= artist.name %>">
-        <input type="hidden" id="<%= picId %>" name="picture" value="<%=artist.image[3]['#text']%>">
-        <button id="<%= btnId %>" class="favorites" type="submit">Save for Later</button>
-      </form>
-    </li>
+    <% if(typeof isLoggedIn === 'undefined'){ %>
+      <li class="similar"><a href='/auth/login'  class='favorites'>login to save favorites</a></li>
+    <% } %>
+    <% if(typeof isLoggedIn !== 'undefined'){ %>
+      <li class="similar">
+        <form method="POST" action="/favorites">
+          <input type="hidden" id="<%= artistId %>" name="artistname" value="<%= artist.name %>">
+          <input type="hidden" id="<%= picId %>" name="picture" value="<%=artist.image[3]['#text']%>">
+          <button id="<%= btnId %>" class="favorites" type="submit">Save for Later</button>
+        </form>
+      </li>
+    <% } %>
   </ul>
 
   <script>

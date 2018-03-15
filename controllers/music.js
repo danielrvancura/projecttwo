@@ -11,7 +11,7 @@ router.get('/api', function(req, res) {
     body = JSON.parse(body);
     // console.log(body);
     // console.log(body.similarartists.artist);
-    res.render('show', {artistName: artistName, similarArtists: body.similarartists.artist});
+    res.render('show', {isLoggedIn: req.user, artistName: artistName, similarArtists: body.similarartists.artist});
   });
 });
 

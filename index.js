@@ -21,10 +21,10 @@ app.use(session({
   saveUninitialized: true
 }));
 
-app.use(flash());
-
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(flash());
 
 app.use(function(req, res, next){
   // before every route, attach the flash messages and current user to res.locals
@@ -63,7 +63,7 @@ app.get('/profile', isLoggedIn, function(req, res) {
 
 app.use('/artistData', require('./controllers/music'));
 app.use('/auth', require('./controllers/auth'));
-app.use('/favorites', require('./controllers/favorites'));
+app.use('/favorites', isLoggedIn, require('./controllers/favorites'));
 
 var server = app.listen(process.env.PORT || 3000);
 
