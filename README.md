@@ -1,3 +1,5 @@
+Wireframes are in "Issues." couldn't figure out how to get the pictures into the readme
+
 Trail of Bands
 
 
