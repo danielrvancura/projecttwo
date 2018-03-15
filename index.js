@@ -34,7 +34,7 @@ app.use(function(req, res, next){
 });
 
 app.get('/', function(req, res) {
-  res.render('index');
+  res.render('index', {page: req.url});
 });
 
 app.get('/api', function(req, res) {

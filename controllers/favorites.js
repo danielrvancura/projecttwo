@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
   });
 });
 
-router.post('/', function(req, res) {
+router.put('/', function(req, res) {
   db.user.find({
     where: {
       id: req.user.id
@@ -29,7 +29,7 @@ router.post('/', function(req, res) {
     })
   });
 });
-// app.put("/api/user/:id", function(req , res){
+// app.put("/user/:id", function(req , res){
 //                var query = "UPDATE [user] SET Name= " + req.body.Name  +  " , Email=  " + req.body.Email + "  WHERE Id= " + req.params.id;
 //                executeQuery (res, query);
 // });

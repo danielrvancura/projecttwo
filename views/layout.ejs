@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=El+Messiri" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet">
   </head>
-
+  <body <% if(typeof page  !== 'undefined' && page == '/'){ %>class='home-page'<% } %> >
     <div class="container">
       <h1>Trail of Bands</h1>
       <% include partials/alerts %>
@@ -21,4 +21,6 @@
       </div>
 
       <script type="text/javascript" src="/js/index.js"></script>
-  </html>
+    </div>
+  </body>
+</html>

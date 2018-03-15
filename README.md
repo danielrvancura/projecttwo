@@ -22,7 +22,19 @@ March 4th
 Finished styling, for the most part. Hardest part was getting the bands that came up to list horizontally. <ul class="col-md-4"> was all I needed after moving the <li> items into a full table and all other craziness.
 
 Next Steps
-Still can't get the home page how I would like it. Footer wouldn't work on the home page so i scrapped it. Image wouldnn't work so i scrapped it.
+Still can't get the home page how I would like it. Footer wouldn't work on the home page so i scrapped it. Image wouldn't work on home page so i scrapped it.
+
+Verb    Path    Action    Used for
+GET    /favorites   index    pulls a list of similar artists to your favorite
+GET    /signup    new    sign up form for website
+GET    /login   new    renders login
+POST    /favorites    create    create a page with 9 similar artists
+POST    /signup    create    create a page with 9 similar artists
+POST    /login    create    authenticates sign in
+GET    /logout   new    renders logout
+GET    /api   new   initial pull from API
+PUT    /teams/:name    update    update a specific team (using form data from /teams/:name/edit)
+DELETE    /delete/:id   destroy    deletes an artist from your favorites
 
 Technologies Used
 Node.js
@@ -35,3 +47,5 @@ jQuery
 Bootstrap
 BCrypt
 EJS
+
+

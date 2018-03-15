@@ -3,8 +3,10 @@
 
 }
 html {
-  background: linear-gradient(to bottom, red, purple);
-  background-size: cover;
+  height: 100%;
+  width: 100%;
+  /* background: linear-gradient(to bottom, red, purple); */
+  background-size: 100% 100%;
 }
 .faveArtists {
   align-items: center;
@@ -27,15 +29,34 @@ body {
   background: linear-gradient(to bottom, red, purple);
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-.body {
-  background-image: url("/images/record.gif");
+.home-page {
+  height: 100%;
+  width: 100%;
+  background-blend-mode: multiply;
+  background-color: rgba( 0, 0, 0, .5);
+  background-image: url("/img/record.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.home-page h1 {
+  color: #999;
+  text-shadow: 2px 2px black;
+}
+
+.home-page p {
+  color: white;
+  margin: 35px 0;
 }
 
 .form-control {
   width: 70%;
   align-items: center;
+  display: inline;
 }
 .artistName {
   color: black;
@@ -51,14 +72,27 @@ body {
   font-family: 'El Messiri', sans-serif;
 }
 
+.artist {
+  padding-bottom: 100px;
+}
+
+.artist-name {
+  min-height: 3em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
 .favorites {
-  height: 30px;
-  width: 200px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin-top: 10px;
+  padding: 5px 34px;
   color: silver;
   background-color: black;
-  margin-left: 80px;
-  font-size: 10pt;
-  /* align-items: center; */
+  font-size: 1.7rem;
+  border-radius: 21px;
+  border: 3px solid;
+  box-shadow: 0 8px 14px -5px black;
 }
 
 li {
@@ -82,10 +116,17 @@ footer {
   margin-left: 35%;
 }
 .circle {
-  border-top-left-radius: 50% 50%;
+  /* border-top-left-radius: 50% 50%;
   border-top-right-radius: 50% 50%;
   border-bottom-right-radius: 50% 50%;
-  border-bottom-left-radius: 50% 50%;
+  border-bottom-left-radius: 50% 50%; */
+  border-radius: 50%;
+  width: 67%;
+  margin: 20px 0;
+  box-shadow: 0 0 0 15px #f09, 0 0 53px -1px black;
+}
+
+
 }
 p {
   font-family: 'El Messiri', sans-serif;

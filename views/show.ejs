@@ -1,5 +1,5 @@
 <a href="/">Back to Search</a></br>
-<a href="/favorites">Bands I Saved</a>
+<a href="/favorites">Your Favorites List</a>
 
 <h1 class="artistName"><%= artistName %></h1>
 
@@ -10,27 +10,34 @@
   <% var artistId = 'name' + artist.url.replace(/\W/g, ''); %>
   <% var picId = 'pic' + artist.url.replace(/\W/g, ''); %>
 
-  <ul class="col-md-4">
-    <li class="similar"><%= artist.name %></li>
+  <ul class="col-md-4 artist">
+    <li class="similar artist-name"><%= artist.name %></li>
     <li class="similar"> <img class= "circle" src="<%=artist.image[3]['#text']%>"> </li>
-    <form method="POST" action="/favorites">
-      <input type="hidden" id="<%= artistId %>" name="artistname" value="<%= artist.name %>">
-      <input type="hidden" id="<%= picId %>" name="picture" value="<%=artist.image[3]['#text']%>">
-      <button id="<%= btnId %>" class="favorites" type="submit">Save for Later</button>
+    <li class="similar">
+      <form method="POST" action="/favorites">
+        <input type="hidden" id="<%= artistId %>" name="artistname" value="<%= artist.name %>">
+        <input type="hidden" id="<%= picId %>" name="picture" value="<%=artist.image[3]['#text']%>">
+        <button id="<%= btnId %>" class="favorites" type="submit">Save for Later</button>
+      </form>
+    </li>
   </ul>
 
-  </form>
   <script>
     $( "#<%= btnId %>" ).click(function(e) {
       e.preventDefault();
       console.log("Yes we are hittin it");
       $( "#<%= btnId %>" ).css('background-color', 'green');
       // Here is where we call a backend route
-      $.post('/favorites', {
-        artistname: $('#<%= artistId %>').val(),
-        picture: $('#<%= picId %>').val()
-      }, function(response) {
-        console.log(response);
+      $.ajax({
+        url: '/favorites',
+        method: 'PUT',
+        data: {
+          artistname: $('#<%= artistId %>').val(),
+          picture: $('#<%= picId %>').val()
+        },
+        success:function(response) {
+          console.log(response);
+        }
       });
     });
   </script>
