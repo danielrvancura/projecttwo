@@ -1,4 +1,3 @@
-Wireframes are in "Issues." couldn't figure out how to get the pictures into the readme
 
 Trail of Bands
 
@@ -37,3 +36,12 @@ jQuery
 Bootstrap
 BCrypt
 EJS
+
+
+Wireframes
+
+![img_20180305_085600418](https://user-images.githubusercontent.com/35078480/37439815-20355afa-27b7-11e8-9bf8-ac4618bf7d98.jpg)
+![img_20180305_085707398](https://user-images.githubusercontent.com/35078480/37439816-2051d004-27b7-11e8-9da0-779d864beced.jpg)
+![img_20180305_085722694](https://user-images.githubusercontent.com/35078480/37439817-206d6634-27b7-11e8-89f0-d56b3fd83952.jpg)
+![img_20180305_090039017](https://user-images.githubusercontent.com/35078480/37439818-208abc5c-27b7-11e8-9ef6-49795a55d856.jpg)
+![img_20180305_090047878](https://user-images.githubusercontent.com/35078480/37439819-20a2ce6e-27b7-11e8-9015-bdeb6e2d87e6.jpg)
