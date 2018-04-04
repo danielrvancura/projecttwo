@@ -34,7 +34,7 @@ POST    /signup    create    create a page with 9 similar artists
 POST    /login    create    authenticates sign in
 GET    /logout   new    renders logout
 GET    /api   new   initial pull from API
-PUT    /teams/:name    update    update a specific team (using form data from /teams/:name/edit)
+PUT    /teams/:name    update    update a specific user
 DELETE    /delete/:id   destroy    deletes an artist from your favorites
 
 Verb    Path    Action    Used for
